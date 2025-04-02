@@ -24,4 +24,10 @@ More SMs = More parallel execution of thread blocks.
 
 A Thread Block does not migrate—it stays on one SM until all its threads finish execution. Inside each SM, a Thread Block is broken into Warps.All threads in a warp execute the same instruction at the same time (SIMT execution model).
 
-If threads in a warp diverge (e.g., due to an if-else statement), performance is reduced.Each SM has multiple CUDA cores (ALUs) where warps execute.
+If threads in a warp diverge (e.g., due to an if-else statement), performance is reduced.Each SM has multiple CUDA cores (ALUs) where warps execute.A Warp Scheduler in the SM picks a ready-to-execute warp.
+
+The warp executes its instruction using CUDA cores.
+
+If a warp stalls (e.g., waiting on memory), the scheduler switches to another warp to keep the SM busy.More active warps → Better latency hiding (because when some warps wait on memory, others keep executing).
+
+Modern GPUs have multiple warp schedulers per SM, so several warps execute simultaneously.
