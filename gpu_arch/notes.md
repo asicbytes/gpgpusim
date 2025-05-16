@@ -17,3 +17,15 @@ A **Kernel** is a grid of **Thread Blocks**. Each block contains multiple thread
 - A minimum of 64 threads per block should be used, and only if there are multiple concurrent blocks per multiprocessor.
   Between 128 and 256 threads per block is a better choice and a good initial range for experimentation with different block sizes.
   Use several (3 to 4) smaller thread blocks rather than one large thread block per multiprocessor if latency affects performance. This is particularly beneficial to kernels that frequently call __syncthreads().
+
+
+| Compute Capability | Architecture Name | Example GPU       |
+| ------------------ | ----------------- | ----------------- |
+| `1.x`              | Tesla             | Quadro FX5800     |
+| `2.x`              | Fermi             | GTX 480           |
+| `3.x`              | Kepler            | GTX 780           |
+| `5.x`              | Maxwell           | GTX 750 Ti        |
+| `6.x`              | Pascal            | GTX 1080, Titan X |
+| `7.0`              | Volta             | Titan V           |
+| `7.5`              | Turing            | RTX 2060          |
+| `8.0 / 8.6`        | Ampere            | A100, RTX 3080    |
